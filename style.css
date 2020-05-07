@@ -1,1 +1,9 @@
-
+/*class needed to change text color*/
+.collection a.collection-item {
+	color: #0d47a1 !important;
+}
+/*class needed to change Search text color*/
+.input-field > label {
+	color: #0d47a1 !important;
+	font-size: 20px !important;
+}
