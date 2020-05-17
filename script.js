@@ -2,18 +2,20 @@ $(document).ready(function() {
 	var weatherKey = 'ddaa6138c5246477932a6097adc5e7f3';
 
 	function callWeatherDataApi(searchedCity) {
-		var url = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid=${weatherKey}`;
+		var url = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=imperial&appid=${weatherKey}`;
 		return url;
 	}
 
 	function callUvIndexApi(latResponse, longResponse) {
-		var uvUrl = `https://api.openweathermap.org/data/2.5/uvi/forecast?appid=${weatherKey}&lat=${latResponse}&Ion=${longResponse}`;
+		var uvUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${latResponse}&lon=${longResponse}&appid=${weatherKey}`;
 		console.log(uvUrl);
+		return uvUrl;
 	}
 
-	function callFiveDayApi() {
+	function callFiveDayApi(searchedCity) {
 		var fiveDayApiUrl = `api.openweathermap.org/data/2.5/forecast?q=${searchedCity}&appid=${weatherKey}`;
 		console.log(fiveDayApiUrl);
+		return fiveDayApiUrl;
 	}
 
 	//Using this reference https://howtodoinjava.com/jquery/jquery-detect-if-enter-key-is-pressed/ to enter input value without a button//
@@ -31,7 +33,9 @@ $(document).ready(function() {
 			//Pull search information from API//
 			var urlResponse = callWeatherDataApi(searchInput);
 
+			//process the callWeatherDataApi response
 			$.get(urlResponse).then(function(response) {
+				console.log(response);
 				//retrieves the temp response and places it into temp div//
 				const tempResponse = response.main.temp;
 				$('#temp').text(tempResponse);
@@ -61,7 +65,21 @@ $(document).ready(function() {
 				console.log(longResponse);
 
 				//retrieves UV index data//
+				var recieveUvResponse = callUvIndexApi(latResponse, longResponse);
 
+				//process the callUVIndexAPI response
+				$.get(recieveUvResponse).then(function(response) {
+					console.log(response);
+					const valueIndex = response.value;
+					$('#uvindex').text(valueIndex);
+				});
+
+				//  retrieves the 5 day api//
+				var fiveDayResponse = callFiveDayApi(searchInput);
+
+				$.get(fiveDayResponse).then(function(response) {
+					console.log(response);
+				});
 				//create the icon
 				var spanImageIcon =
 					"<span><img src='http://openweathermap.org/img/wn/" + iconResponse + ".png'</img></span>";
