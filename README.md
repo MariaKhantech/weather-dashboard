@@ -1,5 +1,4 @@
 # Weather Dashboard
-****
 
 When entering this application you will see the options to enter a city. When you enter a city you will be able to get the status of the weather in your city which includes, tempature, humidity, wind speed and UV index.
 
