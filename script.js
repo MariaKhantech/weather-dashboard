@@ -123,7 +123,7 @@ $(document).ready(function() {
 					var fiveDayArray = [ day1, day2, day3, day4, day5 ];
 
 					fiveDayArray.forEach(function(day) {
-						var divColumn = $('<div class="col s12 m3 l2"></div>');
+						var divColumn = $('<div class="col s12 m4 l2"></div>');
 						var divCard = $('<div class="card"></div');
 						var divCardTitle = $(
 							' <div class="card-title blue lighten-4 center">' +
@@ -204,7 +204,7 @@ $(document).ready(function() {
 
 	$('.parallax').parallax();
 
-	//cloud animation js/
+	//cloud animation js plugin https://skyrim.github.io/klouds/ //
 	$('#myClouds').Klouds({
 		speed: 8,
 		cloudColor1: '#ffffff',
