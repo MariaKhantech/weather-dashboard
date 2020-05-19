@@ -3,12 +3,12 @@ $(document).ready(function() {
 	var searchHistoryArray;
 	var isValidLocation;
 
-	//Initialise the search history array
+	//Initialise the search history array//
 	initialiseSearchHistory();
 
 	setFirstLocation();
 
-	//pull data from localstorage if any
+	//pull data from localstorage if any//
 	function initialiseSearchHistory() {
 		if (JSON.parse(localStorage.getItem('searchHistory'))) {
 			searchHistoryArray = JSON.parse(localStorage.getItem('searchHistory'));
@@ -22,7 +22,7 @@ $(document).ready(function() {
 		}
 	}
 
-	//populate with last searched location otherwise default to boston
+	//populate with last searched location otherwise default to boston//
 	function setFirstLocation() {
 		if (searchHistoryArray.length > 0) {
 			var lastSearched = searchHistoryArray[searchHistoryArray.length - 1];
@@ -100,7 +100,7 @@ $(document).ready(function() {
 				//retrieves UV index data//
 				var recieveUvResponse = callUvIndexApi(latResponse, longResponse);
 
-				//process the callUVIndexAPI response
+				//process the callUVIndexAPI response//
 				$.get(recieveUvResponse).then(function(response) {
 					const valueIndex = response.value;
 					$('#uvindex').text(valueIndex);
@@ -148,7 +148,7 @@ $(document).ready(function() {
 						$('#fivedaycards').append(divColumn);
 					});
 				});
-				//create the icon
+				//create the icon//
 				var spanImageIcon =
 					"<span><img src='http://openweathermap.org/img/wn/" + iconResponse + ".png'</img></span>";
 
@@ -158,7 +158,7 @@ $(document).ready(function() {
 
 				$('#location').html(locationResponse + ' ' + dateformat + ' ' + spanImageIcon);
 			})
-			//catch the failure
+			//catch the failure//
 			.fail(function() {
 				isValidLocation = false;
 			});
@@ -175,7 +175,7 @@ $(document).ready(function() {
 			//Empty search bar after hit enter//
 			$('#search').val('');
 
-			//call hte function to show the weather data
+			//call hte function to show the weather data//
 			populateWeatherData(searchInput);
 
 			if (isValidLocation) {
@@ -187,7 +187,7 @@ $(document).ready(function() {
 					$('.collection').children().last().remove();
 				}
 
-				//put seearch input on search history list
+				//put seearch input on search history list//
 				var searchValueElement = $('<a href="#" class="collection-item"></a>');
 				searchValueElement.text(searchInput);
 				$('.collection').prepend(searchValueElement);
