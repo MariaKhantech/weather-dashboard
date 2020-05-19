@@ -50,7 +50,7 @@ $(document).ready(function() {
 	}
 
 	function callFiveDayApi(searchedCity) {
-		var fiveDayApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${searchedCity}&appid=${weatherKey}`;
+		var fiveDayApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${searchedCity}&units=imperial&appid=${weatherKey}`;
 		console.log(fiveDayApiUrl);
 		return fiveDayApiUrl;
 	}
