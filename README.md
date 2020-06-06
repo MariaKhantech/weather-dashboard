@@ -16,6 +16,8 @@ It will automatically load Boston upon first entry but will save in local storag
 
 ![weather-dashboard](https://user-images.githubusercontent.com/61640527/82172695-ea34c800-9898-11ea-9432-910c534e3c92.gif)
 
+https://mariakhantech.github.io/weather-dashboard/
+
 ***
 ## Authors
 
